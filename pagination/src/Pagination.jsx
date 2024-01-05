@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 const Pagination = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,11 +13,11 @@ const Pagination = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        'https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json'
+        "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json"
       );
       setData(response.data);
     } catch (error) {
-      alert('failed to fetch data');
+      alert("failed to fetch data");
     }
   };
 
@@ -62,25 +63,24 @@ const Pagination = () => {
       </table>
 
       <div className="paginationContainer">
-  <div className="paginationButtons">
-    <button
-      onClick={prevPage}
-      className="paginationButton"
-      style={{ opacity: currentPage > 1 ? 1 : 0.5 }}
-    >
-      Previous
-    </button>
-    <span className="paginationCurrent">{currentPage}</span>
-    <button
-      onClick={nextPage}
-      className="paginationButton"
-      style={{ opacity: currentPage < totalPages ? 1 : 0.5 }}
-    >
-      Next
-    </button>
-  </div>
-</div>
-
+        <div className="paginationButtons">
+          <button
+            onClick={prevPage}
+            className="paginationButton"
+            style={{ opacity: currentPage > 1 ? 1 : 0.5 }}
+          >
+            Previous
+          </button>
+          <span className="paginationCurrent">{currentPage}</span>
+          <button
+            onClick={nextPage}
+            className="paginationButton"
+            style={{ opacity: currentPage < totalPages ? 1 : 0.5 }}
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
